@@ -1,7 +1,5 @@
 var inquirer = require("inquirer");
 var fs = require("fs");
-var path = require("path");
-var generateMarkDown = require("./utils/generateMarkdown")
 
 inquirer.prompt([
     {type:"input" ,
@@ -49,7 +47,7 @@ inquirer.prompt([
 
 ]).then(data => {
     console.log(data);
-
+     
     var readme = `
 # ${data.title}
 
@@ -72,7 +70,7 @@ ${data.description}
 
 
 ## Instalation
-To install run ${data.installation}
+To install, run -> ${data.installation}
 
 ## License
 ![badge](https://img.shields.io/badge/LICENSE-${data.license}-TEAL)
@@ -90,7 +88,7 @@ ${data.test}
 Direct all questions to ${data.username} at ${data.email}
     `
 
-    fs.writeFile("READMEgenerated.md", readme, err => {
+    fs.writeFile("README.md", readme, err => {
         if (err) {
             return console.log(err)
         }
