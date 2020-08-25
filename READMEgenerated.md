@@ -20,7 +20,7 @@ a
 
 
 ## Instalation
-To install run npm i
+To install run 
 
 ## License
 ![badge](https://img.shields.io/badge/LICENSE-MIT-TEAL)

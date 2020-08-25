@@ -18,7 +18,7 @@ inquirer.prompt([
     default: "npm i"},
     
     {type:"input" ,
-    message:"What is your usage?" ,
+    message:"What does the user need to know about this repo??" ,
     name:"usage"},
    
     {type:"input" ,
@@ -47,10 +47,50 @@ inquirer.prompt([
     name:"test",
     default:"npm test"}
 
-]).then(answers => {
-    console.log(answers);
+]).then(data => {
+    console.log(data);
 
-    fs.writeFile("README.md", readme, err => {
+    var readme = `
+# ${data.title}
+
+## Description
+${data.description}
+    
+## Table of Contents
+
+* [Instalation](#instalation)
+
+* [License](#License)
+
+* [Usage](#Usage)
+
+* [Contributing](#Contributing)
+
+* [Tests](#Tests)
+
+* [Questions](#Questions)
+
+
+## Instalation
+To install run ${data.installation}
+
+## License
+![badge](https://img.shields.io/badge/LICENSE-${data.license}-TEAL)
+
+## Usage
+${data.usage}
+
+## Contributing
+${data.contribution}
+
+## Tests
+${data.test}
+
+## Questions
+Direct all questions to ${data.username} at ${data.email}
+    `
+
+    fs.writeFile("READMEgenerated.md", readme, err => {
         if (err) {
             return console.log(err)
         }
